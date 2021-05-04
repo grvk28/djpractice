@@ -10,13 +10,15 @@ from .views import (
                     delete1,
                     update1,
                     add1,
-                    dl
+                    dl,
+                    sort
                     #index,video_watch_view,liked_video,dislike_video,subscriber_view,video_comment, 
                    )
 
 
 urlpatterns=[
    path('', i, name="home1"),
+   path("sort/<str:s>", sort,name="sort"),
    path('index', index, name="home"),
    path('accounts/profile/',index,name="home2"),    
    path("add", add, name="edit"),
