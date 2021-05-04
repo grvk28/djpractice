@@ -3,7 +3,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View List</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="static/css/style.css">
+        <link rel="stylesheet" href="/static/css/style.css">
     </head>
     <body>
         <div class="container mt-5">
@@ -44,7 +44,9 @@
                     
                 </div>
                 <br>
-                <p style="white-space: nowrap;"><b>Code cust.no Name clear year doc.id posting doc.cr.date end.date due.date currency doc.type post.id area total bcreate.date terms invoice.id isOpen</b> <p>
+                <p style="white-space: nowrap;"><b>
+                    <a href="/sort/business_code">Code</a> <a href="/sort/cust_number">cust.no</a> 
+                    <a href="/sort/name_customer">Name</a> <a href="/sort/clear_date">clear</a> year doc.id posting doc.cr.date end.date due.date currency doc.type post.id area total bcreate.date terms invoice.id isOpen</b> <p>
             
                 {% for i in It %}
                 <div >
