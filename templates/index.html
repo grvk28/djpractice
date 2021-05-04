@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>View List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/style.css">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <!-- top -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>View Grocery List</h1>
+                    <a href="/add">Add an Item</a>
+                </div>
+                <div class="col-lg-6 float-right">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <!-- Date Filtering-->
+                            <form action="/filter" method="get">
+                            <input type="date" name="q" id="id_q" class="form-control" value="Filter">  
+                        </div>
+                    <div class="col-lg-4">
+                            <a href="filter/{{query}}"></a> <input type="submit" class="btn btn-danger" value="filter">
+                            {% if user.is_authenticated %}
+                    <a style="margin-left: 250px;" href="{% url 'account_logout' %}">SignOut</a>
+                    {%else%}
+                    <a style="margin-left: 250px;" href="{% url 'account_login' %}">SignIn</a>
+                    {% endif %}
+                        </div>
+                    </div>  
+                </div></form>
+               
+            </div>
+            <!-- // top -->
+            <!-- Grocery Cards -->
+            <div class="row mt-4">
+                <!--- -->
+                <!-- Loop This -->
+                {% for i in It %}
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">{{i.Item}}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">{{i.Quantity}}</h6>
+                          <p class="text-success">{{i.status}}</p>
+                          <br>
+                          <a href="/edit/{{i.pk}}">Update</a>
+                           <a href="/delete/{{i.id}}" style="height: 10%;">Delete</a>
+                        </div>
+                      </div>
+                </div>
+                <!-- // Loop -->
+                {% endfor %}
+       
+  
+
+                
+                
+            </div>
+        </div>
+    </body>
+</html>

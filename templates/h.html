@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>View List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/style.css">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <!-- top -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>View List</h1>
+                    <a href="/add1" style="color:rgb(220, 20, 203)">Add an Item</a>
+                    <a href="http://github.com/grvk28" style="margin-left:2%;color: rgb(250, 64, 64);">All Projects:</a>
+                    <a href="http://grvk28888.pythonanywhere.com/" style="margin-left:2%;color: rgb(250, 64, 64);">Pi </a>
+                    <a href="http://gaurav91226591.pythonanywhere.com/" style="margin-left:2%;color: rgb(250, 64, 64);">Pii</a>
+                </div>
+                <div class="col-lg-6 float-right">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <!-- Date Filtering-->
+                            <form action="/filter2" method="get">
+                            <input type="text" name="q" id="id_q" class="form-control" placeholder="Enter Invoice Id">  
+                        </div>
+                    <div class="col-lg-4">
+                            <a href="filter2/{{query}}"></a> <input type="submit" class="btn btn-danger" value="Search">
+                            {% if user.is_authenticated %}
+                    <a style="margin-left: 250px;" href="{% url 'account_logout' %}">SignOut</a>
+                    {%else%}
+                    <a style="margin-left: 250px;" href="{% url 'account_login' %}">SignIn</a>
+                    {% endif %}
+                        </div>
+                    </div>  
+                </div></form>
+               
+            </div>
+            <!-- // top -->
+            
+                <div >
+                <!--- -->
+                <!-- Loop This -->
+                <div>
+                    
+                </div>
+                <br>
+                <p style="white-space: nowrap;"><b>Code cust.no Name clear year doc.id posting doc.cr.date end.date due.date currency doc.type post.id area total bcreate.date terms invoice.id isOpen</b> <p>
+            
+                {% for i in It %}
+                <div >
+                    <div class="card" style="width:auto;white-space: nowrap;">
+                        <span style="white-space: nowrap;" >
+                          <tr>{{i.business_code}}</tr>
+                          <td style="width: 23.33%;">{{i.cust_number}}</td>
+                          <tr>{{i.name_customer}}</tr>
+                          <tr>{{i.clear_date}}</tr>
+                          <tr>{{i.buisness_year}}</tr>
+                          <tr>{{i.doc_id}}</tr>
+                          <tr>{{i.posting_date}}</tr>
+                          <tr>{{i.document_create_date}}</tr>
+                          <tr>{{i.document_create_date1}}</tr>
+                          <tr>{{i.due_in_date}}</tr>
+                          <tr>{{i.invoice_currency}}</tr>
+                          <tr>{{i.document_type}}</tr>
+                          <tr>{{i.posting_id}}</tr>
+                          <tr>{{i.area_business}}</tr>
+                          <tr>{{i.total_open_amount}}</tr>
+                          <tr>{{i.baseline_create_date}}</tr>
+                          <tr>{{i.cust_payment_terms}}</tr>
+                          <tr>{{i.invoice_id}}</tr>
+                          <tr>{{i.isOpen}}</tr>
+                          
+                          <br>
+                          <a href="/updt/{{i.pk}}" style="color:chartreuse">Update</a>
+                           <a href="/delt/{{i.id}}" style="height: 10%; margin-left: 4.8%; color:rgb(224, 7, 7)">Delete</a>
+                           <a href="/dowl/{{i.id}}" style="height: 10%; margin-left:77.1%; color: rgb(61, 121, 5);">Download</a> 
+                        </span>
+                      </div>
+                </div>
+                <!-- // Loop -->
+                {% endfor %}
+       <div></div>
+
+                
+                
+    </div>
+</div>
+                
+                    <thead>
+                      <tr>
+                        {% for header in headers%}
+                        <th>{{ header }}</th>
+                        <br>
+                        {% endfor %}
+                      </tr>
+                    </thead>
+                    
+                
+    </body>
+
+</html>

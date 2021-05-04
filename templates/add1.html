@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>View List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <!-- top -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>Add Grocery</h1>
+                </div>
+                <div class="col-lg-6 float-right">
+                    <div class="row">
+                        
+                        <div class="col-lg-4">
+                            {% if user.is_authenticated %}
+                        <a style="margin-left: 250px;" href="{% url 'account_logout' %}">SignOut</a>
+                        {%else%}
+                        <a style="margin-left: 250px;" href="{% url 'account_login' %}">SignIn</a>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // top -->
+            <!-- Grocery Cards -->
+            
+            <form method="POST" class="post-form">  
+                {% csrf_token %}  
+                {{ form.as_p }}  
+                <button type="submit" class="save btn btn-default">Save</button>  
+        </form>  
+        </div>
+    </body>
+</html>
