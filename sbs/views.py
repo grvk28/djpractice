@@ -63,7 +63,15 @@ def i(request):
     return render(request, 'h.html', context)
 
 # Create your views here.
-
+def sort(request,s):
+    print(s)
+    myitems=t1.objects.order_by(s)
+    context={
+        'It': myitems
+        #"Quantity":myitems.Quantity
+        #'status': myitems.status
+    }
+    return render(request, 'h.html', context)
 
 def add1(request):
     #n=forms.n
